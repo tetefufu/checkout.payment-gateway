@@ -33,6 +33,16 @@ namespace checkout.payment_gateway.tests
             ((int)response.StatusCode).ShouldBe(200);
         }
 
+        [TestMethod]
+        public async Task WhenClientGetsPaymentThenResponseShouldBe200()
+        {
+            var client = _factory.CreateClient();
+
+            var response = await client.GetAsync("/Payment/?paymentId=1285798");
+
+            ((int)response.StatusCode).ShouldBe(200);
+        }
+
         private static PaymentDto ValidPaymentRequest()
         {
             return new PaymentDto

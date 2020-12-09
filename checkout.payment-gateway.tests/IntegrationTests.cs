@@ -24,21 +24,28 @@ namespace checkout.payment_gateway.tests
         public async Task WhenClientProcessesPaymentThenResponseShouldBe200()
         {
             var client = _factory.CreateClient();
-
-            var request = new PaymentDto
-            {
-                Amount = 1.00m
-            };
+            PaymentDto request = ValidPaymentRequest();
 
             var response = await client.PostAsync(
-                "/ProcessPayment", 
+                "/ProcessPayment",
                 new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
 
             ((int)response.StatusCode).ShouldBe(200);
         }
-    }
 
-    public class APIWebApplicationFactory : WebApplicationFactory<Startup>
-    {
+        private static PaymentDto ValidPaymentRequest()
+        {
+            return new PaymentDto
+            {
+                CreditCard = new CreditCardDto
+                {
+                    Name = "Joel",
+                    CardNumber = 1234123412341234,
+                    ExpiryYear = 10,
+                    ExpiryMonth = 08
+                },
+                Amount = 1.00m
+            };
+        }
     }
 }

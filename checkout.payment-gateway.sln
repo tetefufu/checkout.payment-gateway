@@ -3,12 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30709.64
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "checkout.payment-gateway", "checkout.payment-gateway\checkout.payment-gateway.csproj", "{B919EDAD-A2B6-4CF1-9BF3-E2D10E7C09BC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0156CA20-E345-431A-8A92-F662152C827B}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout.payment-gateway.tests", "checkout.payment-gateway.tests\checkout.payment-gateway.tests.csproj", "{29A3DC02-C5FE-40EE-9575-732BF774CB4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout.payment-gateway.api", "checkout.payment-gateway.api\checkout.payment-gateway.api.csproj", "{7585C77F-BEA3-44D3-8515-5354735928F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "checkout.payment-gateway.core", "checkout.payment-gateway.core\checkout.payment-gateway.core.csproj", "{92703A44-B676-4BF7-8BB2-38A0A7550C9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B919EDAD-A2B6-4CF1-9BF3-E2D10E7C09BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B919EDAD-A2B6-4CF1-9BF3-E2D10E7C09BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B919EDAD-A2B6-4CF1-9BF3-E2D10E7C09BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B919EDAD-A2B6-4CF1-9BF3-E2D10E7C09BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29A3DC02-C5FE-40EE-9575-732BF774CB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29A3DC02-C5FE-40EE-9575-732BF774CB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29A3DC02-C5FE-40EE-9575-732BF774CB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29A3DC02-C5FE-40EE-9575-732BF774CB4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7585C77F-BEA3-44D3-8515-5354735928F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7585C77F-BEA3-44D3-8515-5354735928F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7585C77F-BEA3-44D3-8515-5354735928F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7585C77F-BEA3-44D3-8515-5354735928F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92703A44-B676-4BF7-8BB2-38A0A7550C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92703A44-B676-4BF7-8BB2-38A0A7550C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92703A44-B676-4BF7-8BB2-38A0A7550C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92703A44-B676-4BF7-8BB2-38A0A7550C9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

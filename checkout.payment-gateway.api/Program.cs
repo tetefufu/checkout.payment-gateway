@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace checkout.payment_gateway
+namespace checkout.payment_gateway.api
 {
     public class Program
     {

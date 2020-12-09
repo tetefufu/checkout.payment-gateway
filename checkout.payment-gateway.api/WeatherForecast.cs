@@ -1,6 +1,6 @@
 using System;
 
-namespace checkout.payment_gateway
+namespace checkout.payment_gateway.api
 {
     public class WeatherForecast
     {

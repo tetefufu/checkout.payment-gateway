@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace checkout.payment_gateway
+namespace checkout.payment_gateway.api
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace checkout.payment_gateway
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "checkout.payment_gateway", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "checkout.payment_gateway.api", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace checkout.payment_gateway
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "checkout.payment_gateway v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "checkout.payment_gateway.api v1"));
             }
 
             app.UseHttpsRedirection();

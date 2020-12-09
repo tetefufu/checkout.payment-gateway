@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace checkout.payment_gateway.Controllers
+namespace checkout.payment_gateway.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

@@ -18,6 +18,8 @@ namespace checkout.payment_gateway.api.Controllers
         [HttpPost]
         public string Post(PaymentDto payment)
         {
+
+
             return string.Empty;
         }
     }

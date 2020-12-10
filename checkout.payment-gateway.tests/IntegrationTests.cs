@@ -43,7 +43,7 @@ namespace checkout.payment_gateway.tests
             ((int)response.StatusCode).ShouldBe(200);
         }
 
-        private static PaymentDto ValidPaymentRequest()
+        public static PaymentDto ValidPaymentRequest()
         {
             return new PaymentDto
             {

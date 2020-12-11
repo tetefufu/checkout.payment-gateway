@@ -1,7 +1,6 @@
 ﻿using checkout.payment_gateway.core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Shouldly;
 
 namespace checkout.payment_gateway.tests
 {
@@ -12,8 +11,9 @@ namespace checkout.payment_gateway.tests
         public void WhenPaymentProcessedThenBankApiIsCalled()
         {
             Mock<IBank> mockBank = new Mock<IBank>();
+            Mock<IProcessPaymentRepository> mockRepo = new Mock<IProcessPaymentRepository>();
 
-            var unit = new ProcessPaymentService(mockBank.Object);
+            var unit = new ProcessPaymentService(mockBank.Object, mockRepo.Object);
 
             unit.ProcessPayment(IntegrationTests.ValidPaymentRequest());
 
@@ -21,17 +21,16 @@ namespace checkout.payment_gateway.tests
         }
 
         [TestMethod]
-        public void WhenPaymentProcessedThenReturnPaymentIdFromBank()
+        public void WhenPaymentProcessedThenReturnPaymentId()
         {
             Mock<IBank> mockBank = new Mock<IBank>();
-            var paymentId = "a";
-            mockBank.Setup(m => m.ProcessPayment(It.IsAny<PaymentDto>())).Returns(paymentId);
+            Mock<IProcessPaymentRepository> mockRepo = new Mock<IProcessPaymentRepository>();
 
-            var unit = new ProcessPaymentService(mockBank.Object);
+            var unit = new ProcessPaymentService(mockBank.Object, mockRepo.Object);
 
             var paymentIdReturned = unit.ProcessPayment(IntegrationTests.ValidPaymentRequest());
 
-            paymentIdReturned.ShouldBe(paymentId);
+            Assert.IsNotNull(paymentIdReturned);
         }
     }
 }

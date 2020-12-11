@@ -16,7 +16,7 @@ namespace checkout.payment_gateway.api.Controllers
         }
 
         [HttpGet]
-        public string Post(string paymentId)
+        public string Get(string paymentId)
         {
             return string.Empty;
         }

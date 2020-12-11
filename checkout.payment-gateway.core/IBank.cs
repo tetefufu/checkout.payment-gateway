@@ -2,6 +2,6 @@
 {
     public interface IBank
     {
-        string ProcessPayment(PaymentDto paymentDto);
+        BankReponse ProcessPayment(PaymentDto paymentDto);
     }
 }

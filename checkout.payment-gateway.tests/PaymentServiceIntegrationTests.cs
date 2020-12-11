@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Shouldly;
-using System;
 
 namespace checkout.payment_gateway.tests
 {
@@ -20,6 +19,7 @@ namespace checkout.payment_gateway.tests
             var payment = paymentService.GetPayment(paymentIdReturned);
 
             payment.PaymentId.ShouldBe(paymentIdReturned);
+            payment.MaskedCreditCardNumber.ShouldBe("4321");
         }
     }
 }

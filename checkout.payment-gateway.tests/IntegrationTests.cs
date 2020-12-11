@@ -50,7 +50,7 @@ namespace checkout.payment_gateway.tests
                 CreditCard = new CreditCardDto
                 {
                     Name = "Joel",
-                    CardNumber = 1234123412341234,
+                    CardNumber = 1234567887654321,
                     ExpiryYear = 10,
                     ExpiryMonth = 08
                 },

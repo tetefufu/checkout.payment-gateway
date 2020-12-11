@@ -4,7 +4,6 @@
     {
         InvalidRequest = 0,
         Success = 1,
-        Declined = 2,
-        ApplicationError = 3
+        Declined = 2
     }
 }

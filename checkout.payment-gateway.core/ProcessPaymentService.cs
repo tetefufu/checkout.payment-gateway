@@ -17,9 +17,11 @@ namespace checkout.payment_gateway.core
         {
             var bankResponse = GetBankResponse(paymentDto);
 
-            var paymentId = _processPaymentRepository.SaveProcessPaymentRequest(paymentDto, bankResponse);
+            var processedPayment = new ProcessedPayment(paymentDto, bankResponse);
 
-            return paymentId;
+            _processPaymentRepository.SaveProcessPaymentRequest(processedPayment);
+
+            return processedPayment.PaymentId;
         }
 
         private BankReponse GetBankResponse(PaymentDto payment)

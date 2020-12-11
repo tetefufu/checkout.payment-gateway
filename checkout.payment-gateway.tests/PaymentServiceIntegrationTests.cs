@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Shouldly;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.tests
 {
@@ -9,13 +10,13 @@ namespace checkout.payment_gateway.tests
     public class PaymentServiceIntegrationTests
     {
         [TestMethod]
-        public void GivenPaymentProcessed_WhenProcessAndGetPayment_ThenPaymentDetailsReturned()
+        public async Task GivenPaymentProcessed_WhenProcessAndGetPayment_ThenPaymentDetailsReturned()
         {
             Mock<IBank> mockBank = new Mock<IBank>();
             var processPaymentService = new ProcessPaymentService(mockBank.Object, new ProcessPaymentRepository());
             var paymentService = new PaymentService(new Repository());
 
-            var processPaymentResponse = processPaymentService.ProcessPayment(IntegrationTests.ValidPaymentRequest());
+            var processPaymentResponse = await processPaymentService.ProcessPayment(IntegrationTests.ValidPaymentRequest());
             var payment = paymentService.GetPayment(processPaymentResponse.PaymentId);
 
             payment.PaymentId.ShouldBe(processPaymentResponse.PaymentId);

@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.core
 {
     public interface IProcessPaymentRepository
     {
-        void SaveProcessPaymentRequest(ProcessedPayment processedPayment);
+        Task SaveProcessPaymentRequest(ProcessedPayment processedPayment);
     }
 }

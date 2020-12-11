@@ -1,18 +1,20 @@
 ﻿using LiteDB;
+using LiteDB.Async;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.core
 {
     public class ProcessPaymentRepository : IProcessPaymentRepository
     {
-        public void SaveProcessPaymentRequest(ProcessedPayment processedPayment)
+        public async Task SaveProcessPaymentRequest(ProcessedPayment processedPayment)
         {
-            using (var db = new LiteDatabase(@"Data.db"))
+            using (var db = new LiteDatabaseAsync(@"Data.db"))
             {
                 var payments = db.GetCollection<ProcessedPayment>("payments");
 
-                payments.Insert(processedPayment);                
+                await payments.InsertAsync(processedPayment);                
 
-                payments.EnsureIndex(x => x.PaymentId);
+                await payments.EnsureIndexAsync(x => x.PaymentId);
             }
         }
     }

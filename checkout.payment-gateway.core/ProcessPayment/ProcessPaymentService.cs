@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.core
 {
@@ -13,13 +14,13 @@ namespace checkout.payment_gateway.core
             _processPaymentRepository = processPaymentRepository;
         }
 
-        public ProcessPaymentResponse ProcessPayment(PaymentDto paymentDto)
+        public async Task<ProcessPaymentResponse> ProcessPayment(PaymentDto paymentDto)
         {
-            var bankResponse = GetBankResponse(paymentDto);
+            var bankResponse = await GetBankResponse(paymentDto);
 
             var processedPayment = new ProcessedPayment(paymentDto, bankResponse);
 
-            _processPaymentRepository.SaveProcessPaymentRequest(processedPayment);
+            await _processPaymentRepository.SaveProcessPaymentRequest(processedPayment);
 
             return new ProcessPaymentResponse
             {
@@ -27,11 +28,11 @@ namespace checkout.payment_gateway.core
             };
         }
 
-        private BankReponse GetBankResponse(PaymentDto payment)
+        private async Task<BankReponse> GetBankResponse(PaymentDto payment)
         {
             try
             {
-                return _bank.ProcessPayment(payment);
+                return await _bank.ProcessPayment(payment);
             }
             catch (Exception e)
             {

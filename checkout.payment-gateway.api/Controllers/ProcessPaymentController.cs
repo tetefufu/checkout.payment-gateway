@@ -1,6 +1,7 @@
 ﻿using checkout.payment_gateway.core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.api.Controllers
 {
@@ -8,19 +9,19 @@ namespace checkout.payment_gateway.api.Controllers
     [Route("[controller]")]
     public class ProcessPaymentController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<ProcessPaymentController> _logger;
+        private readonly IProcessPaymentService _processPaymentService;
 
-        public ProcessPaymentController(ILogger<WeatherForecastController> logger)
+        public ProcessPaymentController(ILogger<ProcessPaymentController> logger, IProcessPaymentService processPaymentService)
         {
             _logger = logger;
+            _processPaymentService = processPaymentService;
         }
 
         [HttpPost]
-        public string Post(PaymentDto payment)
+        public async Task<ProcessPaymentResponse> Post(PaymentDto payment)
         {
-
-
-            return string.Empty;
+            return await _processPaymentService.ProcessPayment(payment);
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace checkout.payment_gateway.core
 {
-    public class ProcessPaymentService
+    public class ProcessPaymentService : IProcessPaymentService
     {
         private IBank _bank;
         private readonly IProcessPaymentRepository _processPaymentRepository;
@@ -13,7 +13,7 @@ namespace checkout.payment_gateway.core
             _processPaymentRepository = processPaymentRepository;
         }
 
-        public Guid ProcessPayment(PaymentDto paymentDto)
+        public ProcessPaymentResponse ProcessPayment(PaymentDto paymentDto)
         {
             var bankResponse = GetBankResponse(paymentDto);
 
@@ -21,7 +21,10 @@ namespace checkout.payment_gateway.core
 
             _processPaymentRepository.SaveProcessPaymentRequest(processedPayment);
 
-            return processedPayment.PaymentId;
+            return new ProcessPaymentResponse
+            {
+                PaymentId = processedPayment.PaymentId
+            };
         }
 
         private BankReponse GetBankResponse(PaymentDto payment)

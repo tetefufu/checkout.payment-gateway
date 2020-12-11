@@ -15,10 +15,10 @@ namespace checkout.payment_gateway.tests
             var processPaymentService = new ProcessPaymentService(mockBank.Object, new ProcessPaymentRepository());
             var paymentService = new PaymentService(new Repository());
 
-            var paymentIdReturned = processPaymentService.ProcessPayment(IntegrationTests.ValidPaymentRequest());
-            var payment = paymentService.GetPayment(paymentIdReturned);
+            var processPaymentResponse = processPaymentService.ProcessPayment(IntegrationTests.ValidPaymentRequest());
+            var payment = paymentService.GetPayment(processPaymentResponse.PaymentId);
 
-            payment.PaymentId.ShouldBe(paymentIdReturned);
+            payment.PaymentId.ShouldBe(processPaymentResponse.PaymentId);
             payment.MaskedCreditCardNumber.ShouldBe("4321");
         }
     }

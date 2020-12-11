@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Shouldly;
+using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace checkout.payment_gateway.tests
                 new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
 
             ((int)response.StatusCode).ShouldBe(200);
+            ProcessPaymentResponse processPaymentResponse = JsonConvert.DeserializeObject<ProcessPaymentResponse>(await response.Content.ReadAsStringAsync());
+            processPaymentResponse.PaymentId.ShouldBeOfType<Guid>();
         }
 
         [TestMethod]

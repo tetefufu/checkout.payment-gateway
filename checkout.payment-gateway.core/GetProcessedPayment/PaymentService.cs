@@ -2,7 +2,7 @@
 
 namespace checkout.payment_gateway.core
 {
-    public class PaymentService
+    public class PaymentService : IPaymentService
     {
         private IRepository _bank;
 

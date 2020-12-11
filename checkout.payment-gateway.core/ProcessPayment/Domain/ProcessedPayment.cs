@@ -4,7 +4,7 @@ namespace checkout.payment_gateway.core
 {
     public class ProcessedPayment
     {
-        public ProcessedPayment(PaymentDto payment, BankReponse bankReponse)
+        public ProcessedPayment(PaymentDto payment, BankResponse bankReponse)
         {
             PaymentId = Guid.NewGuid();
             MaskedCreditCardNumber = GetMaskedCreditCardNumber(payment.CreditCard);
@@ -22,6 +22,6 @@ namespace checkout.payment_gateway.core
         public string MaskedCreditCardNumber { get; private set; }
         public string Currency { get; private set; }
         public decimal Amount { get; private set; }
-        public BankReponse BankResponse { get; private set; }
+        public BankResponse BankResponse { get; private set; }
     }
 }

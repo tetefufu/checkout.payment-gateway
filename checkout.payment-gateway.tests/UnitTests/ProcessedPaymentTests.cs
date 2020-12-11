@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 
-namespace checkout.payment_gateway.tests
+namespace checkout.payment_gateway.tests.UnitTests
 {
     [TestClass]
     public class ProcessedPaymentTests
@@ -23,7 +23,7 @@ namespace checkout.payment_gateway.tests
                 Currency = currency,
                 Amount = amount
             },
-            new BankReponse
+            new BankResponse
             {
                 PaymentStatus = paymentStatus
             });

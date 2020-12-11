@@ -28,7 +28,7 @@ namespace checkout.payment_gateway.core
             };
         }
 
-        private async Task<BankReponse> GetBankResponse(PaymentDto payment)
+        private async Task<BankResponse> GetBankResponse(PaymentDto payment)
         {
             try
             {

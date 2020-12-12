@@ -28,17 +28,18 @@ Checkout.Payment-Gateway is a payment gateway, an API based application that all
 2. Install nuget packages
 3. Build and Run
 
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 See swagger link which opens by default
 
+## Assumptions
 
-<!-- ROADMAP -->
+- Only three possible responses from real banks: (Success, Invalid, Declined)
+- an implementation of IBank will be built for the actual bank used in production
+
 ## Roadmap
 
-...
+- Handle Adress Details
 
 <!-- LICENSE -->
 ## License

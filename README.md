@@ -18,8 +18,6 @@ Checkout.Payment-Gateway is a payment gateway, an API based application that all
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-
 * Visual Studio
 * .NET Core SDK
 * Docker (optional)

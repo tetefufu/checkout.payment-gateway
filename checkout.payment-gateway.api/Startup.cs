@@ -28,6 +28,8 @@ namespace checkout.payment_gateway.api
             services.AddScoped<IProcessPaymentService, ProcessPaymentService>();
             services.AddScoped<IProcessPaymentRepository, ProcessPaymentRepository>();
             services.AddScoped<IBank, Bank>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IRepository, Repository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

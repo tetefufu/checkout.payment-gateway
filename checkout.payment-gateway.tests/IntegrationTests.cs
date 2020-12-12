@@ -34,16 +34,12 @@ namespace checkout.payment_gateway.tests
             ((int)response.StatusCode).ShouldBe(200);
             ProcessPaymentResponse processPaymentResponse = JsonConvert.DeserializeObject<ProcessPaymentResponse>(await response.Content.ReadAsStringAsync());
             processPaymentResponse.PaymentId.ShouldBeOfType<Guid>();
-        }
 
-        [TestMethod]
-        public async Task WhenClientGetsPaymentThenResponseShouldBe200()
-        {
-            var client = _factory.CreateClient();
-
-            var response = await client.GetAsync("/Payment/?paymentId=1285798");
+            response = await client.GetAsync($"/Payment/?paymentId={processPaymentResponse.PaymentId}");
 
             ((int)response.StatusCode).ShouldBe(200);
+            PaymentDetailsDto paymentDetailsDto = JsonConvert.DeserializeObject<PaymentDetailsDto>(await response.Content.ReadAsStringAsync());
+            paymentDetailsDto.PaymentId.ShouldBeOfType<Guid>();
         }
 
         public static PaymentDto ValidPaymentRequest()

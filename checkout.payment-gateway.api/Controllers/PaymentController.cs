@@ -1,6 +1,7 @@
 ﻿using checkout.payment_gateway.core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace checkout.payment_gateway.api.Controllers
 {
@@ -9,16 +10,18 @@ namespace checkout.payment_gateway.api.Controllers
     public class PaymentController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IPaymentService _paymentService;
 
-        public PaymentController(ILogger<WeatherForecastController> logger)
+        public PaymentController(ILogger<WeatherForecastController> logger, IPaymentService paymentService)
         {
             _logger = logger;
+            _paymentService = paymentService;
         }
 
         [HttpGet]
-        public string Get(string paymentId)
+        public PaymentDetailsDto Get(Guid paymentId)
         {
-            return string.Empty;
+            return _paymentService.GetPayment(paymentId);
         }
     }
 }

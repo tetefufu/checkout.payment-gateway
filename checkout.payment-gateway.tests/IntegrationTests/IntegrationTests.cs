@@ -1,15 +1,16 @@
-﻿using checkout.payment_gateway.api;
-using checkout.payment_gateway.core;
+﻿using System;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using checkout.payment_gateway.api;
+using checkout.payment_gateway.core.Commands.DTO;
+using checkout.payment_gateway.core.Queries.DTO;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Shouldly;
-using System;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace checkout.payment_gateway.tests
+namespace checkout.payment_gateway.tests.IntegrationTests
 {
     [TestClass]
     public class IntegrationTests

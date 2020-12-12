@@ -1,5 +1,8 @@
 using checkout.payment_gateway.core;
+using checkout.payment_gateway.core.Commands;
+using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Queries;
+using checkout.payment_gateway.core.Queries.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

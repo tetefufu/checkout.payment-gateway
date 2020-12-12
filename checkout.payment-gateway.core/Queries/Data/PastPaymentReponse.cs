@@ -1,9 +1,9 @@
-﻿using LiteDB;
-using LiteDB.Async;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using checkout.payment_gateway.core.Queries.DTO;
+using LiteDB.Async;
 
-namespace checkout.payment_gateway.core
+namespace checkout.payment_gateway.core.Queries.Data
 {
     public class PastPaymentReponse : IPastPaymentRepository
     {

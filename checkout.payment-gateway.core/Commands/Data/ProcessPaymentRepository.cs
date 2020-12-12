@@ -1,8 +1,8 @@
-﻿using LiteDB;
+﻿using System.Threading.Tasks;
+using checkout.payment_gateway.core.Commands.Domain;
 using LiteDB.Async;
-using System.Threading.Tasks;
 
-namespace checkout.payment_gateway.core
+namespace checkout.payment_gateway.core.Commands.Data
 {
     public class ProcessPaymentRepository : IProcessPaymentRepository
     {

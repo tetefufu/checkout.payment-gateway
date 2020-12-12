@@ -1,4 +1,6 @@
-﻿namespace checkout.payment_gateway.core
+﻿using checkout.payment_gateway.core.Shared;
+
+namespace checkout.payment_gateway.core.Commands.DTO
 {
     public class BankResponse
     {

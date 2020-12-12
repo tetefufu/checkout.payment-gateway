@@ -1,4 +1,7 @@
 ﻿using checkout.payment_gateway.core;
+using checkout.payment_gateway.core.Commands.Domain;
+using checkout.payment_gateway.core.Commands.DTO;
+using checkout.payment_gateway.core.Shared;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shouldly;
 

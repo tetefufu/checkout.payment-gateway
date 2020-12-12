@@ -1,11 +1,13 @@
-﻿using checkout.payment_gateway.core;
+﻿using System.Threading.Tasks;
+using checkout.payment_gateway.core.Commands;
+using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Queries;
+using checkout.payment_gateway.core.Queries.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Shouldly;
-using System.Threading.Tasks;
 
-namespace checkout.payment_gateway.tests
+namespace checkout.payment_gateway.tests.IntegrationTests
 {
     [TestClass]
     public class PaymentServiceIntegrationTests

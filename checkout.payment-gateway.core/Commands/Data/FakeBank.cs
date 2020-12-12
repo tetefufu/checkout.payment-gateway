@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
+using checkout.payment_gateway.core.Commands.DTO;
+using checkout.payment_gateway.core.Shared;
 
-namespace checkout.payment_gateway.core
+namespace checkout.payment_gateway.core.Commands.Data
 {
     public class FakeBank : IBank
     {

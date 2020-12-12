@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
+using checkout.payment_gateway.core.Commands.Data;
+using checkout.payment_gateway.core.Commands.Domain;
+using checkout.payment_gateway.core.Commands.DTO;
 
-namespace checkout.payment_gateway.core
+namespace checkout.payment_gateway.core.Commands
 {
     public class ProcessPaymentService : IProcessPaymentService
     {

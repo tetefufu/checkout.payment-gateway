@@ -1,4 +1,4 @@
-﻿namespace checkout.payment_gateway.core
+﻿namespace checkout.payment_gateway.core.Shared
 {
     public enum BankStatusEnum
     {

@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using checkout.payment_gateway.core.Commands;
+using checkout.payment_gateway.core.Commands.DTO;
+using checkout.payment_gateway.core.Queries;
+using checkout.payment_gateway.core.Queries.DTO;
 
 namespace checkout.payment_gateway.api.Controllers
 {

@@ -1,8 +1,10 @@
-﻿using checkout.payment_gateway.core;
+﻿using checkout.payment_gateway.core.Commands;
+using checkout.payment_gateway.core.Commands.Data;
+using checkout.payment_gateway.core.Commands.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace checkout.payment_gateway.tests
+namespace checkout.payment_gateway.tests.UnitTests
 {
     [TestClass]
     public class ProcessPaymentServiceTest
@@ -15,7 +17,7 @@ namespace checkout.payment_gateway.tests
 
             var unit = new ProcessPaymentService(mockBank.Object, mockRepo.Object);
 
-            unit.ProcessPayment(IntegrationTests.ValidPaymentRequest());
+            unit.ProcessPayment(IntegrationTests.IntegrationTests.ValidPaymentRequest());
 
             mockBank.Verify(m => m.ProcessPayment(It.IsAny<ProcessPaymentRequest>()), Times.Once);
         }
@@ -28,7 +30,7 @@ namespace checkout.payment_gateway.tests
 
             var unit = new ProcessPaymentService(mockBank.Object, mockRepo.Object);
 
-            var paymentIdReturned = unit.ProcessPayment(IntegrationTests.ValidPaymentRequest());
+            var paymentIdReturned = unit.ProcessPayment(IntegrationTests.IntegrationTests.ValidPaymentRequest());
 
             Assert.IsNotNull(paymentIdReturned);
         }

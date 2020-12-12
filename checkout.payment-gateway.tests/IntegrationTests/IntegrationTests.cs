@@ -34,7 +34,7 @@ namespace checkout.payment_gateway.tests.IntegrationTests
             ProcessPaymentResponse processPaymentResponse = JsonConvert.DeserializeObject<ProcessPaymentResponse>(await response.Content.ReadAsStringAsync());
             processPaymentResponse.PaymentId.ShouldBeOfType<Guid>();
 
-            response = await client.GetAsync($"/Payments/?paymentId={processPaymentResponse.PaymentId}");
+            response = await client.GetAsync($"/Payments/{processPaymentResponse.PaymentId}");
 
             ((int)response.StatusCode).ShouldBe(200);
             PastPaymentResponse paymentDetailsDto = JsonConvert.DeserializeObject<PastPaymentResponse>(await response.Content.ReadAsStringAsync());

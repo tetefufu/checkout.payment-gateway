@@ -31,7 +31,7 @@ namespace checkout.payment_gateway.api
             services.AddScoped<IProcessPaymentRepository, ProcessPaymentRepository>();
             services.AddScoped<IBank, FakeBank>();
             services.AddScoped<IPastPaymentService, PastPaymentService>();
-            services.AddScoped<IPastPaymentRepository, PastPaymentResponse>();
+            services.AddScoped<IPastPaymentRepository, PastPaymentRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

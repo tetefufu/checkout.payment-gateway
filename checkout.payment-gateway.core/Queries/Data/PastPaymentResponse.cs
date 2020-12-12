@@ -4,7 +4,7 @@ using LiteDB.Async;
 
 namespace checkout.payment_gateway.core.Queries.Data
 {
-    public class PastPaymentResponse : IPastPaymentRepository
+    public class PastPaymentRepository : IPastPaymentRepository
     {
         public async Task<DTO.PastPaymentResponse> GetPayment(Guid paymentId)
         {

@@ -28,6 +28,7 @@ namespace checkout.payment_gateway.api.Controllers
         }
 
         [HttpGet]
+        [Route("{paymentId}")]
         public async Task<PastPaymentResponse> Get(Guid paymentId)
         {
             return await _paymentService.GetPayment(paymentId);

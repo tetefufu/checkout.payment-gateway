@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Commands.Domain;
 using checkout.payment_gateway.core.Commands.DTO;
+using Microsoft.Extensions.Logging;
 
 namespace checkout.payment_gateway.core.Commands
 {
@@ -10,9 +11,14 @@ namespace checkout.payment_gateway.core.Commands
     {
         private readonly IBank _bank;
         private readonly IProcessPaymentRepository _processPaymentRepository;
+        private readonly ILogger _logger;
 
-        public ProcessPaymentService(IBank bank, IProcessPaymentRepository processPaymentRepository)
+        public ProcessPaymentService(
+            ILogger<ProcessPaymentService> logger, 
+            IBank bank, 
+            IProcessPaymentRepository processPaymentRepository)
         {
+            _logger = logger;
             _bank = bank;
             _processPaymentRepository = processPaymentRepository;
         }
@@ -39,7 +45,8 @@ namespace checkout.payment_gateway.core.Commands
             }
             catch (Exception e)
             {
-                // log error
+                _logger.LogError(e, $"Bank Service Error: {e.Message}");
+
                 return null;
             }
         }

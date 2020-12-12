@@ -3,6 +3,7 @@ using checkout.payment_gateway.core.Commands;
 using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Queries;
 using checkout.payment_gateway.core.Queries.Data;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Shouldly;
@@ -16,14 +17,19 @@ namespace checkout.payment_gateway.tests.IntegrationTests
         public async Task GivenPaymentProcessed_WhenProcessAndGetPayment_ThenPaymentDetailsReturned()
         {
             Mock<IBank> mockBank = new Mock<IBank>();
-            var processPaymentService = new ProcessPaymentService(mockBank.Object, new ProcessPaymentRepository());
+            var mockLogger = new Mock<ILogger<ProcessPaymentService>>();
+
+            var processPaymentService = new ProcessPaymentService(mockLogger.Object, mockBank.Object, new ProcessPaymentRepository());
             var paymentService = new PastPaymentService(new PastPaymentRepository());
 
-            var processPaymentResponse = await processPaymentService.ProcessPayment(IntegrationTests.ValidPaymentRequest());
+            var processPaymentRequest = IntegrationTests.ValidPaymentRequest();
+            var processPaymentResponse = await processPaymentService.ProcessPayment(processPaymentRequest);
             var payment = await paymentService.GetPayment(processPaymentResponse.PaymentId);
 
             payment.PaymentId.ShouldBe(processPaymentResponse.PaymentId);
             payment.MaskedCreditCardNumber.ShouldBe("4321");
+            payment.Amount.ShouldBe(processPaymentRequest.Amount);
+            payment.Currency.ShouldBe(processPaymentRequest.Currency);
         }
     }
 }

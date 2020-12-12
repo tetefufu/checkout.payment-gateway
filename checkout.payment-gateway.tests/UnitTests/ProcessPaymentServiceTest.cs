@@ -1,6 +1,7 @@
 ﻿using checkout.payment_gateway.core.Commands;
 using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Commands.DTO;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -12,10 +13,11 @@ namespace checkout.payment_gateway.tests.UnitTests
         [TestMethod]
         public void WhenPaymentProcessedThenBankApiIsCalled()
         {
-            Mock<IBank> mockBank = new Mock<IBank>();
-            Mock<IProcessPaymentRepository> mockRepo = new Mock<IProcessPaymentRepository>();
+            var mockBank = new Mock<IBank>();
+            var mockRepo = new Mock<IProcessPaymentRepository>();
+            var mockLogger = new Mock<ILogger<ProcessPaymentService>>();
 
-            var unit = new ProcessPaymentService(mockBank.Object, mockRepo.Object);
+            var unit = new ProcessPaymentService(mockLogger.Object, mockBank.Object, mockRepo.Object);
 
             unit.ProcessPayment(IntegrationTests.IntegrationTests.ValidPaymentRequest());
 
@@ -25,10 +27,11 @@ namespace checkout.payment_gateway.tests.UnitTests
         [TestMethod]
         public void WhenPaymentProcessedThenReturnPaymentId()
         {
-            Mock<IBank> mockBank = new Mock<IBank>();
-            Mock<IProcessPaymentRepository> mockRepo = new Mock<IProcessPaymentRepository>();
+            var mockBank = new Mock<IBank>();
+            var mockRepo = new Mock<IProcessPaymentRepository>();
+            var mockLogger = new Mock<ILogger<ProcessPaymentService>>();
 
-            var unit = new ProcessPaymentService(mockBank.Object, mockRepo.Object);
+            var unit = new ProcessPaymentService(mockLogger.Object, mockBank.Object, mockRepo.Object);
 
             var paymentIdReturned = unit.ProcessPayment(IntegrationTests.IntegrationTests.ValidPaymentRequest());
 

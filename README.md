@@ -41,7 +41,12 @@ See swagger link which opens by default
 
 - Handle Adress Details
 
-<!-- LICENSE -->
+### Ideal Architecture
+
+The scaling requirements of this API lends itself well to using serverless technologies on AWS
+
+![alt text](https://miro.medium.com/max/1220/1*VfuuRdNeVHEFnl8sdctpjg.png)
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.

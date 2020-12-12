@@ -9,10 +9,10 @@ namespace checkout.payment_gateway.api.Controllers
     [Route("[controller]")]
     public class PaymentController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<PaymentController> _logger;
         private readonly IPaymentService _paymentService;
 
-        public PaymentController(ILogger<WeatherForecastController> logger, IPaymentService paymentService)
+        public PaymentController(ILogger<PaymentController> logger, IPaymentService paymentService)
         {
             _logger = logger;
             _paymentService = paymentService;

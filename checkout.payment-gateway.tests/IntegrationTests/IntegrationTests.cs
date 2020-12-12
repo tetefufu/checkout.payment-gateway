@@ -27,19 +27,22 @@ namespace checkout.payment_gateway.tests
             var client = _factory.CreateClient();
             ProcessPaymentRequest request = ValidPaymentRequest();
 
-            var response = await client.PostAsync(
-                "/ProcessPayment",
-                new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
+            var response = await client.PostAsync("/Payments", ToStringContent(request));
 
             ((int)response.StatusCode).ShouldBe(200);
             ProcessPaymentResponse processPaymentResponse = JsonConvert.DeserializeObject<ProcessPaymentResponse>(await response.Content.ReadAsStringAsync());
             processPaymentResponse.PaymentId.ShouldBeOfType<Guid>();
 
-            response = await client.GetAsync($"/Payment/?paymentId={processPaymentResponse.PaymentId}");
+            response = await client.GetAsync($"/Payments/?paymentId={processPaymentResponse.PaymentId}");
 
             ((int)response.StatusCode).ShouldBe(200);
             PastPaymentResponse paymentDetailsDto = JsonConvert.DeserializeObject<PastPaymentResponse>(await response.Content.ReadAsStringAsync());
             paymentDetailsDto.PaymentId.ShouldBeOfType<Guid>();
+        }
+
+        private static StringContent ToStringContent(ProcessPaymentRequest request)
+        {
+            return new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
         }
 
         public static ProcessPaymentRequest ValidPaymentRequest()

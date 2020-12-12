@@ -17,7 +17,7 @@ namespace checkout.payment_gateway.tests
             var paymentService = new PaymentService(new Repository());
 
             var processPaymentResponse = await processPaymentService.ProcessPayment(IntegrationTests.ValidPaymentRequest());
-            var payment = paymentService.GetPayment(processPaymentResponse.PaymentId);
+            var payment = await paymentService.GetPayment(processPaymentResponse.PaymentId);
 
             payment.PaymentId.ShouldBe(processPaymentResponse.PaymentId);
             payment.MaskedCreditCardNumber.ShouldBe("4321");

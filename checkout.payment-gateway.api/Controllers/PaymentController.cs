@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.api.Controllers
 {
@@ -19,9 +20,9 @@ namespace checkout.payment_gateway.api.Controllers
         }
 
         [HttpGet]
-        public PaymentDetailsDto Get(Guid paymentId)
+        public async Task<PaymentDetailsDto> Get(Guid paymentId)
         {
-            return _paymentService.GetPayment(paymentId);
+            return await _paymentService.GetPayment(paymentId);
         }
     }
 }

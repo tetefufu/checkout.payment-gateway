@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.core
 {
@@ -11,9 +12,9 @@ namespace checkout.payment_gateway.core
             _bank = bank;
         }
 
-        public PaymentDetailsDto GetPayment(Guid paymentId)
+        public async Task<PaymentDetailsDto> GetPayment(Guid paymentId)
         {
-            return _bank.GetPayment(paymentId);
+            return await _bank.GetPayment(paymentId);
         }
     }
 }

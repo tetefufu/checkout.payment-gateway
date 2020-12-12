@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.core
 {
     public interface IRepository
     {
-        PaymentDetailsDto GetPayment(Guid paymentId);
+        Task<PaymentDetailsDto> GetPayment(Guid paymentId);
     }
 }

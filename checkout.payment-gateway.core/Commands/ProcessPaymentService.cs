@@ -8,7 +8,7 @@ namespace checkout.payment_gateway.core.Commands
 {
     public class ProcessPaymentService : IProcessPaymentService
     {
-        private IBank _bank;
+        private readonly IBank _bank;
         private readonly IProcessPaymentRepository _processPaymentRepository;
 
         public ProcessPaymentService(IBank bank, IProcessPaymentRepository processPaymentRepository)

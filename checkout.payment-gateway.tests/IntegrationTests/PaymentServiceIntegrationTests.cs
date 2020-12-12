@@ -17,7 +17,7 @@ namespace checkout.payment_gateway.tests.IntegrationTests
         {
             Mock<IBank> mockBank = new Mock<IBank>();
             var processPaymentService = new ProcessPaymentService(mockBank.Object, new ProcessPaymentRepository());
-            var paymentService = new PastPaymentService(new PastPaymentReponse());
+            var paymentService = new PastPaymentService(new PastPaymentResponse());
 
             var processPaymentResponse = await processPaymentService.ProcessPayment(IntegrationTests.ValidPaymentRequest());
             var payment = await paymentService.GetPayment(processPaymentResponse.PaymentId);

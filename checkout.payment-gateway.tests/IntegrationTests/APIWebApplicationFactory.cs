@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace checkout.payment_gateway.tests.IntegrationTests
 {
-    public class APIWebApplicationFactory : WebApplicationFactory<Startup>
+    public class ApiWebApplicationFactory : WebApplicationFactory<Startup>
     {
     }
 }

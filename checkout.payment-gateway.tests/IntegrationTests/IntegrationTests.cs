@@ -19,7 +19,7 @@ namespace checkout.payment_gateway.tests.IntegrationTests
 
         public IntegrationTests()
         {
-            _factory = new APIWebApplicationFactory();
+            _factory = new ApiWebApplicationFactory();
         }
 
         [TestMethod]

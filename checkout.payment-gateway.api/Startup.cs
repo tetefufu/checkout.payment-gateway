@@ -1,4 +1,3 @@
-using checkout.payment_gateway.core;
 using checkout.payment_gateway.core.Commands;
 using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Queries;
@@ -32,7 +31,7 @@ namespace checkout.payment_gateway.api
             services.AddScoped<IProcessPaymentRepository, ProcessPaymentRepository>();
             services.AddScoped<IBank, FakeBank>();
             services.AddScoped<IPastPaymentService, PastPaymentService>();
-            services.AddScoped<IPastPaymentRepository, PastPaymentReponse>();
+            services.AddScoped<IPastPaymentRepository, PastPaymentResponse>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

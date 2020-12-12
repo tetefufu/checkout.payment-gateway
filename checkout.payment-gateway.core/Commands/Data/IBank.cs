@@ -4,6 +4,6 @@ namespace checkout.payment_gateway.core
 {
     public interface IBank
     {
-        Task<BankResponse> ProcessPayment(PaymentDto paymentDto);
+        Task<BankResponse> ProcessPayment(ProcessPaymentRequest paymentDto);
     }
 }

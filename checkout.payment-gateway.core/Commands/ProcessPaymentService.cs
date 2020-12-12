@@ -14,13 +14,13 @@ namespace checkout.payment_gateway.core
             _processPaymentRepository = processPaymentRepository;
         }
 
-        public async Task<ProcessPaymentResponse> ProcessPayment(PaymentDto paymentDto)
+        public async Task<ProcessPaymentResponse> ProcessPayment(ProcessPaymentRequest paymentDto)
         {
             var bankResponse = await GetBankResponse(paymentDto);
 
             var processedPayment = new ProcessedPayment(paymentDto, bankResponse);
 
-            await _processPaymentRepository.SaveProcessPaymentRequest(processedPayment);
+            await _processPaymentRepository.SaveProcessedPayment(processedPayment);
 
             return new ProcessPaymentResponse
             {
@@ -28,7 +28,7 @@ namespace checkout.payment_gateway.core
             };
         }
 
-        private async Task<BankResponse> GetBankResponse(PaymentDto payment)
+        private async Task<BankResponse> GetBankResponse(ProcessPaymentRequest payment)
         {
             try
             {

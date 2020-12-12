@@ -14,9 +14,9 @@ namespace checkout.payment_gateway.tests.UnitTests
             decimal amount = 1.00m;
             BankStatusEnum paymentStatus = BankStatusEnum.Success;
 
-            var processedPayment = new ProcessedPayment(new PaymentDto
+            var processedPayment = new ProcessedPayment(new ProcessPaymentRequest
             {
-                CreditCard = new CreditCardDto
+                CreditCard = new CreditCard
                 {
                     CardNumber = 1234567887654321
                 },

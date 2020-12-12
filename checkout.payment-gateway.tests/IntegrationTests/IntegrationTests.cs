@@ -25,7 +25,7 @@ namespace checkout.payment_gateway.tests
         public async Task WhenClientProcessesPaymentThenResponseShouldBe200()
         {
             var client = _factory.CreateClient();
-            PaymentDto request = ValidPaymentRequest();
+            ProcessPaymentRequest request = ValidPaymentRequest();
 
             var response = await client.PostAsync(
                 "/ProcessPayment",
@@ -38,15 +38,15 @@ namespace checkout.payment_gateway.tests
             response = await client.GetAsync($"/Payment/?paymentId={processPaymentResponse.PaymentId}");
 
             ((int)response.StatusCode).ShouldBe(200);
-            PaymentDetailsDto paymentDetailsDto = JsonConvert.DeserializeObject<PaymentDetailsDto>(await response.Content.ReadAsStringAsync());
+            PastPaymentResponse paymentDetailsDto = JsonConvert.DeserializeObject<PastPaymentResponse>(await response.Content.ReadAsStringAsync());
             paymentDetailsDto.PaymentId.ShouldBeOfType<Guid>();
         }
 
-        public static PaymentDto ValidPaymentRequest()
+        public static ProcessPaymentRequest ValidPaymentRequest()
         {
-            return new PaymentDto
+            return new ProcessPaymentRequest
             {
-                CreditCard = new CreditCardDto
+                CreditCard = new CreditCard
                 {
                     Name = "Joel",
                     CardNumber = 1234567887654321,

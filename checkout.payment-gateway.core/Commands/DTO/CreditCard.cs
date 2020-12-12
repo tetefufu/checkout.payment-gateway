@@ -1,6 +1,6 @@
 ﻿namespace checkout.payment_gateway.core
 {
-    public class CreditCardDto
+    public class CreditCard
     {
         public string Name { get; set; }
         public long CardNumber { get; set; }

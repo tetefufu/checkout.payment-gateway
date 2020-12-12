@@ -17,7 +17,7 @@ namespace checkout.payment_gateway.tests
 
             unit.ProcessPayment(IntegrationTests.ValidPaymentRequest());
 
-            mockBank.Verify(m => m.ProcessPayment(It.IsAny<PaymentDto>()), Times.Once);
+            mockBank.Verify(m => m.ProcessPayment(It.IsAny<ProcessPaymentRequest>()), Times.Once);
         }
 
         [TestMethod]

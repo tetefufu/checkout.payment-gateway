@@ -6,7 +6,7 @@ namespace checkout.payment_gateway.core
 {
     public class ProcessPaymentRepository : IProcessPaymentRepository
     {
-        public async Task SaveProcessPaymentRequest(ProcessedPayment processedPayment)
+        public async Task SaveProcessedPayment(ProcessedPayment processedPayment)
         {
             using (var db = new LiteDatabaseAsync(@"Data.db"))
             {

@@ -2,7 +2,7 @@
 
 namespace checkout.payment_gateway.core
 {
-    public class PaymentDetailsDto
+    public class PastPaymentResponse
     {
         public Guid PaymentId { get; set; }
         public string MaskedCreditCardNumber { get; set; }

@@ -2,9 +2,9 @@
 
 namespace checkout.payment_gateway.core
 {
-    public class Bank : IBank
+    public class FakeBank : IBank
     {
-        public async Task<BankResponse> ProcessPayment(PaymentDto paymentDto)
+        public async Task<BankResponse> ProcessPayment(ProcessPaymentRequest paymentDto)
         {
             var response = new BankResponse
             {

@@ -19,7 +19,7 @@ namespace checkout.payment_gateway.api.Controllers
         }
 
         [HttpPost]
-        public async Task<ProcessPaymentResponse> Post(PaymentDto payment)
+        public async Task<ProcessPaymentResponse> Post(ProcessPaymentRequest payment)
         {
             return await _processPaymentService.ProcessPayment(payment);
         }

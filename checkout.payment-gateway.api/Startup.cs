@@ -1,4 +1,5 @@
 using checkout.payment_gateway.core;
+using checkout.payment_gateway.core.Queries;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -26,9 +27,9 @@ namespace checkout.payment_gateway.api
             });
             services.AddScoped<IProcessPaymentService, ProcessPaymentService>();
             services.AddScoped<IProcessPaymentRepository, ProcessPaymentRepository>();
-            services.AddScoped<IBank, Bank>();
-            services.AddScoped<IPaymentService, PaymentService>();
-            services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IBank, FakeBank>();
+            services.AddScoped<IPastPaymentService, PastPaymentService>();
+            services.AddScoped<IPastPaymentRepository, PastPaymentReponse>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

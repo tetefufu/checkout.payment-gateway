@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace checkout.payment_gateway.core
 {
-    public interface IPaymentService
+    public interface IPastPaymentService
     {
-        Task<PaymentDetailsDto> GetPayment(Guid paymentId);
+        Task<PastPaymentResponse> GetPayment(Guid paymentId);
     }
 }

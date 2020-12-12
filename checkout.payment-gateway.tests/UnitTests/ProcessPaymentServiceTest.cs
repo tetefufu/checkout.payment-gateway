@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using checkout.payment_gateway.core.Commands;
 using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Commands.DTO;
@@ -12,44 +13,44 @@ namespace checkout.payment_gateway.tests.UnitTests
     [TestClass]
     public class ProcessPaymentServiceTest
     {
-        private Mock<IBank> mockBank = new Mock<IBank>();
-        private Mock<IProcessPaymentRepository> mockRepo = new Mock<IProcessPaymentRepository>();
-        private Mock<ILogger<ProcessPaymentService>> mockLogger = new Mock<ILogger<ProcessPaymentService>>();
-        private Mock<ICreditCardValidator> mockValidator = new Mock<ICreditCardValidator>();
+        private readonly Mock<IBank> _mockBank = new Mock<IBank>();
+        private readonly Mock<IProcessPaymentRepository> _mockRepo = new Mock<IProcessPaymentRepository>();
+        private readonly Mock<ILogger<ProcessPaymentService>> _mockLogger = new Mock<ILogger<ProcessPaymentService>>();
+        private readonly Mock<ICreditCardValidator> _mockValidator = new Mock<ICreditCardValidator>();
 
         [TestMethod]
-        public void WhenPaymentProcessedThenBankApiIsCalled()
+        public async Task WhenPaymentProcessedThenBankApiIsCalled()
         {
             var unit = GetProcessPaymentService();
 
-            unit.ProcessPayment(ProcessPaymentServiceIntegrationTests.ValidPaymentRequest());
+            await unit.ProcessPayment(ProcessPaymentServiceIntegrationTests.ValidPaymentRequest());
 
-            mockBank.Verify(m => m.ProcessPayment(It.IsAny<ProcessPaymentRequest>()), Times.Once);
+            _mockBank.Verify(m => m.ProcessPayment(It.IsAny<ProcessPaymentRequest>()), Times.Once);
         }
 
         [TestMethod]
-        public void WhenPaymentProcessedThenReturnPaymentId()
+        public async Task WhenPaymentProcessedThenReturnPaymentId()
         {
             var unit = GetProcessPaymentService();
 
-            var paymentIdReturned = unit.ProcessPayment(ProcessPaymentServiceIntegrationTests.ValidPaymentRequest());
+            var paymentIdReturned = await unit.ProcessPayment(ProcessPaymentServiceIntegrationTests.ValidPaymentRequest());
 
             Assert.IsNotNull(paymentIdReturned);
         }
 
         [TestMethod]
-        public void WhenCVVMissingThenReturnClientError()
+        public async Task WhenCVVMissingThenReturnClientError()
         {
-            var unit = new ProcessPaymentService(mockLogger.Object, mockBank.Object, mockRepo.Object, new CreditCardValidator());
+            var unit = new ProcessPaymentService(_mockLogger.Object, _mockBank.Object, _mockRepo.Object, new CreditCardValidator());
             var processPaymentRequest = ProcessPaymentServiceIntegrationTests.ValidPaymentRequest();
             processPaymentRequest.CreditCard.CVV = 0;
 
-            Assert.ThrowsException<ArgumentException>(() => unit.ProcessPayment(processPaymentRequest));
+            await Assert.ThrowsExceptionAsync<ArgumentException>(() => unit.ProcessPayment(processPaymentRequest));
         }
 
         private ProcessPaymentService GetProcessPaymentService()
         {
-            return new ProcessPaymentService(mockLogger.Object, mockBank.Object, mockRepo.Object, mockValidator.Object);
+            return new ProcessPaymentService(_mockLogger.Object, _mockBank.Object, _mockRepo.Object, _mockValidator.Object);
         }
     }
 }

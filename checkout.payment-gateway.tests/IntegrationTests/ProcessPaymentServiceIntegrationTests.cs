@@ -13,11 +13,11 @@ using Shouldly;
 namespace checkout.payment_gateway.tests.IntegrationTests
 {
     [TestClass]
-    public class IntegrationTests
+    public class ProcessPaymentServiceIntegrationTests
     {
         private readonly WebApplicationFactory<Startup> _factory;
 
-        public IntegrationTests()
+        public ProcessPaymentServiceIntegrationTests()
         {
             _factory = new ApiWebApplicationFactory();
         }
@@ -55,7 +55,8 @@ namespace checkout.payment_gateway.tests.IntegrationTests
                     Name = "Joel",
                     CardNumber = 1234567887654321,
                     ExpiryYear = 10,
-                    ExpiryMonth = 08
+                    ExpiryMonth = 08,
+                    CVV = 123
                 },
                 Amount = 1.00m
             };

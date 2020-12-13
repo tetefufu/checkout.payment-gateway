@@ -30,7 +30,12 @@ Checkout.Payment-Gateway is a payment gateway, an API based application that all
 
 ## Usage
 
-See swagger link which opens by default
+See swagger link which opens by default when run via Visual Studio
+https://localhost:44398/swagger/index.html
+```
+GET /Payments/{paymentId}
+POST /Payments
+```
 
 ## Assumptions
 

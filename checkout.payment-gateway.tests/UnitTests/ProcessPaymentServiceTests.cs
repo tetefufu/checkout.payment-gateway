@@ -16,7 +16,7 @@ namespace checkout.payment_gateway.tests.UnitTests
         private readonly Mock<IBank> _mockBank = new Mock<IBank>();
         private readonly Mock<IProcessPaymentRepository> _mockRepo = new Mock<IProcessPaymentRepository>();
         private readonly Mock<ILogger<ProcessPaymentService>> _mockLogger = new Mock<ILogger<ProcessPaymentService>>();
-        private readonly Mock<ICreditCardValidator> _mockValidator = new Mock<ICreditCardValidator>();
+        private readonly Mock<IProcessPaymentRequestValidator> _mockValidator = new Mock<IProcessPaymentRequestValidator>();
 
         [TestMethod]
         public async Task WhenPaymentProcessedThenBankApiIsCalled()
@@ -41,7 +41,7 @@ namespace checkout.payment_gateway.tests.UnitTests
         [TestMethod]
         public async Task WhenCVVMissingThenReturnClientError()
         {
-            var unit = new ProcessPaymentService(_mockLogger.Object, _mockBank.Object, _mockRepo.Object, new CreditCardValidator());
+            var unit = new ProcessPaymentService(_mockLogger.Object, _mockBank.Object, _mockRepo.Object, new ProcessPaymentRequestValidator());
             var processPaymentRequest = ProcessPaymentServiceIntegrationTests.ValidPaymentRequest();
             processPaymentRequest.CreditCard.CVV = 0;
 

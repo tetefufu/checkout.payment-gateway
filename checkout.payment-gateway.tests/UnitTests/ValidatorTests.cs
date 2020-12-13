@@ -18,7 +18,7 @@ namespace checkout.payment_gateway.tests.UnitTests
         {
             var request = CreateProcessPaymentRequest(amount, currency, name, cardNumber, CVV, expiryYear, expiryMonth);
 
-            var validator = new CreditCardValidator();
+            var validator = new ProcessPaymentRequestValidator();
 
             Assert.ThrowsException<FluentValidation.ValidationException>(() => validator.Validate(request));
         }
@@ -29,7 +29,7 @@ namespace checkout.payment_gateway.tests.UnitTests
         {
             var request = CreateProcessPaymentRequest(amount, currency, name, cardNumber, CVV, expiryYear, expiryMonth);
 
-            var validator = new CreditCardValidator();
+            var validator = new ProcessPaymentRequestValidator();
 
             validator.Validate(request);
         }

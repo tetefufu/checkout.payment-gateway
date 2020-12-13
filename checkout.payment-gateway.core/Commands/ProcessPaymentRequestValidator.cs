@@ -4,18 +4,18 @@ using FluentValidation;
 
 namespace checkout.payment_gateway.core.Commands
 {
-    public class CreditCardValidator : ICreditCardValidator
+    public class ProcessPaymentRequestValidator : IProcessPaymentRequestValidator
     {
-        private readonly CustomerValidator _validator = new CustomerValidator();
+        private readonly ProcessPaymentRequestFluentValidator _processPaymentRequestFluentValidator = new ProcessPaymentRequestFluentValidator();
 
         public void Validate(ProcessPaymentRequest request)
         {
-            _validator.ValidateAndThrow(request);
+            _processPaymentRequestFluentValidator.ValidateAndThrow(request);
         }
 
-        private class CustomerValidator : AbstractValidator<ProcessPaymentRequest>
+        private class ProcessPaymentRequestFluentValidator : AbstractValidator<ProcessPaymentRequest>
         {
-            public CustomerValidator()
+            public ProcessPaymentRequestFluentValidator()
             {
                 RuleFor(x => x).NotNull();
                 RuleFor(x => x.Amount).GreaterThan(0);

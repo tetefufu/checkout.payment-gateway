@@ -11,24 +11,24 @@ namespace checkout.payment_gateway.core.Commands
     {
         private readonly IBank _bank;
         private readonly IProcessPaymentRepository _processPaymentRepository;
-        private readonly ICreditCardValidator _creditCardValidator;
+        private readonly IProcessPaymentRequestValidator _processPaymentRequestValidator;
         private readonly ILogger _logger;
 
         public ProcessPaymentService(
             ILogger<ProcessPaymentService> logger, 
             IBank bank, 
             IProcessPaymentRepository processPaymentRepository,
-            ICreditCardValidator creditCardValidator)
+            IProcessPaymentRequestValidator processPaymentRequestValidator)
         {
             _logger = logger;
             _bank = bank;
             _processPaymentRepository = processPaymentRepository;
-            _creditCardValidator = creditCardValidator;
+            _processPaymentRequestValidator = processPaymentRequestValidator;
         }
 
         public async Task<ProcessPaymentResponse> ProcessPayment(ProcessPaymentRequest paymentDto)
         {
-            _creditCardValidator.Validate(paymentDto);
+            _processPaymentRequestValidator.Validate(paymentDto);
 
             var bankResponse = await GetBankResponse(paymentDto);
 

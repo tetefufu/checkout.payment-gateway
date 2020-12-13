@@ -32,7 +32,7 @@ namespace checkout.payment_gateway.api
             services.AddScoped<IBank, FakeBank>();
             services.AddScoped<IPastPaymentService, PastPaymentService>();
             services.AddScoped<IPastPaymentRepository, PastPaymentRepository>();
-            services.AddScoped<ICreditCardValidator, CreditCardValidator>();
+            services.AddScoped<IProcessPaymentRequestValidator, ProcessPaymentRequestValidator>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

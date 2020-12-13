@@ -39,7 +39,24 @@ See swagger link which opens by default
 
 ## Roadmap
 
-- Handle Adress Details
+* Handle Adress Details
+* CC validator https://github.com/gustavofrizzo/CreditCardValidator
+* Error middleware 
+* Resiliant databse (e.g. AWS DynamoDB)
+* Less use of primitives
+* Eventual consistency 
+* config via docker parameters
+* config via appsettings
+* Mediator
+* Delete test data of integration tests
+* Performance testing
+  * process requests/sec
+  * requests/reqtrieved per sec
+* Authentication 
+* Encryption
+* Assert that multiple validation errors are shown 
+* Assert that HTTP code is 40X for validation errors 
+* Build script / CI
 
 ### Ideal Architecture
 

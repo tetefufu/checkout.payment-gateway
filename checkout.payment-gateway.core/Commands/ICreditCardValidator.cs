@@ -4,6 +4,6 @@ namespace checkout.payment_gateway.core.Commands
 {
     public interface ICreditCardValidator
     {
-        void Validate(CreditCard creditCard);
+        void Validate(ProcessPaymentRequest creditCard);
     }
 }

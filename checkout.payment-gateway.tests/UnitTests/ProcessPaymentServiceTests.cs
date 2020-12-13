@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using checkout.payment_gateway.core.Commands;
 using checkout.payment_gateway.core.Commands.Data;
 using checkout.payment_gateway.core.Commands.DTO;
 using checkout.payment_gateway.tests.IntegrationTests;
+using FluentValidation;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -11,7 +11,7 @@ using Moq;
 namespace checkout.payment_gateway.tests.UnitTests
 {
     [TestClass]
-    public class ProcessPaymentServiceTest
+    public class ProcessPaymentServiceTests
     {
         private readonly Mock<IBank> _mockBank = new Mock<IBank>();
         private readonly Mock<IProcessPaymentRepository> _mockRepo = new Mock<IProcessPaymentRepository>();
@@ -45,7 +45,7 @@ namespace checkout.payment_gateway.tests.UnitTests
             var processPaymentRequest = ProcessPaymentServiceIntegrationTests.ValidPaymentRequest();
             processPaymentRequest.CreditCard.CVV = 0;
 
-            await Assert.ThrowsExceptionAsync<ArgumentException>(() => unit.ProcessPayment(processPaymentRequest));
+            await Assert.ThrowsExceptionAsync<ValidationException>(() => unit.ProcessPayment(processPaymentRequest));
         }
 
         private ProcessPaymentService GetProcessPaymentService()

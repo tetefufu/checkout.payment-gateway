@@ -28,7 +28,7 @@ namespace checkout.payment_gateway.core.Commands
 
         public async Task<ProcessPaymentResponse> ProcessPayment(ProcessPaymentRequest paymentDto)
         {
-            _creditCardValidator.Validate(paymentDto.CreditCard);
+            _creditCardValidator.Validate(paymentDto);
 
             var bankResponse = await GetBankResponse(paymentDto);
 

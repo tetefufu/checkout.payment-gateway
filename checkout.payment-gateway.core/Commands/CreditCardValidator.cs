@@ -1,15 +1,24 @@
-﻿using System;
-using checkout.payment_gateway.core.Commands.DTO;
+﻿using checkout.payment_gateway.core.Commands.DTO;
+using FluentValidation;
 
 namespace checkout.payment_gateway.core.Commands
 {
     public class CreditCardValidator : ICreditCardValidator
     {
-        public void Validate(CreditCard creditCard)
+        private readonly CustomerValidator _validator = new CustomerValidator();
+
+        public void Validate(ProcessPaymentRequest request)
         {
-            if (creditCard.CVV < 100)
+            _validator.ValidateAndThrow(request);
+        }
+
+        private class CustomerValidator : AbstractValidator<ProcessPaymentRequest>
+        {
+            public CustomerValidator()
             {
-                throw new ArgumentException("CVV must be three numbers");
+                RuleFor(x => x.Amount).GreaterThan(0);
+                RuleFor(x => x.CreditCard).NotNull();
+                RuleFor(x => x.CreditCard.CVV).GreaterThan(100).When(x => x.CreditCard != null);
             }
         }
     }

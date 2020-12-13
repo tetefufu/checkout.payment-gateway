@@ -54,11 +54,12 @@ namespace checkout.payment_gateway.tests.IntegrationTests
                 {
                     Name = "Joel",
                     CardNumber = 1234567887654321,
-                    ExpiryYear = 10,
-                    ExpiryMonth = 08,
+                    ExpiryYear = 2100,
+                    ExpiryMonth = 8,
                     CVV = 123
                 },
-                Amount = 1.00m
+                Amount = 1.00m,
+                Currency = NMoney.Iso4217.CurrencySet.GBP.CharCode
             };
         }
     }

@@ -39,19 +39,18 @@ See swagger link which opens by default
 
 ## Roadmap
 
-* Handle Adress Details
-* CC validator https://github.com/gustavofrizzo/CreditCardValidator
-* Error middleware 
-* Resiliant databse (e.g. AWS DynamoDB)
+* Handle CC holder's address
+* use CC validator https://github.com/gustavofrizzo/CreditCardValidator to validate CC number
+* Error middleware to return proper http error codes (e.g. 40X for validation errors)
+* Resiliant database implementation (e.g. AWS DynamoDB)
 * Less use of primitives
-* Eventual consistency 
 * config via docker parameters
 * config via appsettings
-* Mediator
+* Mediatr
 * Delete test data of integration tests
 * Performance testing
   * process requests/sec
-  * requests/reqtrieved per sec
+  * query requests/sec
 * Authentication 
 * Encryption
 * Assert that multiple validation errors are shown 
